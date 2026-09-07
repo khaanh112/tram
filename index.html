@@ -116,17 +116,23 @@
 
   /* ---------- philosophy split ---------- */
   .philosophy{position:relative;padding:150px 0;}
-  .philo-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .philo-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center;}
+  @media (max-width:860px){.philo-grid{grid-template-columns:1fr;}}
   .section-label{display:flex;align-items:center;gap:12px;font-size:13.5px;letter-spacing:.04em;color:var(--bronze-bright);margin-bottom:26px;}
   .section-label .line{width:28px;height:1px;background:var(--bronze-bright);}
-  .philo-grid h2{font-size:clamp(30px,4vw,52px);max-width:460px;}
-  .philo-grid p{margin-top:26px;max-width:420px;color:var(--beige-dim);font-size:16px;}
-  .philo-visual{position:relative;height:460px;border-radius:2px;overflow:hidden;background:radial-gradient(ellipse at 40% 30%, #2a2420, var(--black) 72%);
+  .philo-grid h2{font-size:clamp(30px,4vw,52px);max-width:520px;}
+  .philo-grid p{margin-top:22px;max-width:540px;color:var(--beige-dim);font-size:16px;}
+  .philo-grid p:first-of-type{margin-top:26px;}
+  .philo-stats{display:flex;gap:44px;margin-top:40px;flex-wrap:wrap;}
+  .philo-stats b{display:block;font-family:'Fraunces',serif;font-style:italic;font-size:26px;color:var(--bronze-bright);font-weight:400;}
+  .philo-stats span{font-size:12.5px;color:var(--beige-dim);letter-spacing:.02em;}
+  .philo-visual{position:relative;height:460px;}
+  .philo-visual-inner{position:absolute;inset:0;border-radius:2px;overflow:hidden;background:radial-gradient(ellipse at 40% 30%, #2a2420, var(--black) 72%);
     clip-path:circle(0% at 50% 50%);transition:clip-path 1.1s var(--ease);}
-  .philo-visual.is-visible{clip-path:circle(75% at 50% 50%);}
+  .philo-visual.is-visible .philo-visual-inner{clip-path:circle(75% at 50% 50%);}
   .philo-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     filter:grayscale(.25) sepia(.15) brightness(.7) contrast(1.1);}
-  .philo-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,9,8,.1), rgba(10,9,8,.65));}
+  .philo-visual-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,9,8,.1), rgba(10,9,8,.65));}
   .philo-visual .spot{position:absolute;inset:0;z-index:1;
     background:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%), rgba(203,168,115,.45), transparent 70%);
     transition:background .1s linear;mix-blend-mode:screen;}
@@ -280,11 +286,20 @@
     <div>
       <p class="section-label reveal reveal-up"><span class="line"></span>Câu chuyện</p>
       <h2 class="reveal reveal-up split-chars">Chúng tôi không làm nước hoa nhanh.</h2>
-      <p class="reveal reveal-up">Mỗi mẻ trầm được ủ tối thiểu 90 ngày trong thùng gỗ sồi, không rút ngắn, không pha tắt. Sự kiên nhẫn là nguyên liệu quý nhất trong từng chai TRẦM.</p>
+      <p class="reveal reveal-up">Mọi chuyện bắt đầu từ những cánh rừng phía tây Khánh Hòa, nơi ba thế hệ trong gia đình sáng lập đã đi tìm trầm bằng đôi tay của mình. Không máy dò, không khai thác ồ ạt — chỉ có kinh nghiệm truyền lại qua nhiều đời để nhận ra đâu là khúc gỗ đã âm thầm kết trầm suốt hàng chục năm trong lòng đất.</p>
+      <p class="reveal reveal-up">Từ khúc gỗ ấy đến giọt tinh dầu đầu tiên là một hành trình không thể rút ngắn: hấp mềm, chưng cất lạnh nhiều lượt, rồi ủ tối thiểu 90 ngày trong thùng gỗ sồi và bóng tối hoàn toàn — đủ lâu để mùi hương tự tìm được hình dạng cuối cùng của nó, thay vì bị ép chín non bằng nhiệt độ cao hay hương liệu tổng hợp.</p>
+      <p class="reveal reveal-up">Chúng tôi không sản xuất đại trà. Mỗi năm TRẦM chỉ cho ra một số lượng chai giới hạn, đủ để giữ đúng chất lượng đã hứa với người đầu tiên mua nó — không đủ để biến thành một món hàng ai cũng có thể mua ở bất cứ đâu.</p>
+      <div class="philo-stats reveal reveal-up">
+        <div><b>3 thế hệ</b><span>gắn bó với nghề trầm</span></div>
+        <div><b>90 ngày</b><span>ủ tối thiểu mỗi mẻ</span></div>
+        <div><b>&gt;10 năm</b><span>tuổi gỗ trầm trước khi thu hoạch</span></div>
+      </div>
     </div>
     <div class="philo-visual" id="philoVisual">
-      <img src="https://images.unsplash.com/photo-1598634222670-87c5f558119c?w=1200&q=80&fm=jpg&fit=crop&auto=format" alt="Chai nước hoa TRẦM trên nền tối">
-      <div class="spot" id="philoSpot"></div>
+      <div class="philo-visual-inner">
+        <img src="https://images.unsplash.com/photo-1598634222670-87c5f558119c?w=1200&q=80&fm=jpg&fit=crop&auto=format" alt="Chai nước hoa TRẦM trên nền tối">
+        <div class="spot" id="philoSpot"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -314,22 +329,22 @@
     <div class="collection-track" id="collectionTrack">
       <div class="collection-item">
         <div class="frame"><img src="https://images.unsplash.com/photo-1598634222670-87c5f558119c?w=900&q=80&fm=jpg&fit=crop&auto=format" alt="TRẦM No.1 — Đêm rừng sâu"></div>
-        <p class="no">No. 01 — Đêm rừng sâu</p><h3>TRẦM No.1</h3><p>Trầm hương Khánh Hòa, hổ phách, xạ hương gỗ.</p>
+        <p class="no">No. 01 — Đêm rừng sâu</p><h3>TRẦM No.1</h3><p>Trầm hương Khánh Hòa, hổ phách, xạ hương gỗ. Mở đầu trầm ấm như bước vào một khu rừng chưa có ánh đèn.</p>
         <p class="price">1.850.000₫ · 50ml</p><a href="#contact" class="cta">Xem chi tiết →</a>
       </div>
       <div class="collection-item">
         <div class="frame"><img src="https://images.unsplash.com/photo-1749264361617-dbe17a223f54?w=900&q=80&fm=jpg&fit=crop&auto=format" alt="TRẦM No.2 — Khói chiều"></div>
-        <p class="no">No. 02 — Khói chiều</p><h3>TRẦM No.2</h3><p>Nhang trầm, da thuộc, hạt tiêu đen.</p>
+        <p class="no">No. 02 — Khói chiều</p><h3>TRẦM No.2</h3><p>Nhang trầm, da thuộc, hạt tiêu đen. Khô và cay nhẹ, gợi khoảnh khắc tàn nhang bay trong gian nhà cũ lúc chạng vạng.</p>
         <p class="price">1.950.000₫ · 50ml</p><a href="#contact" class="cta">Xem chi tiết →</a>
       </div>
       <div class="collection-item">
         <div class="frame"><img src="https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=900&q=80&fm=jpg&fit=crop&auto=format" alt="TRẦM No.3 — Mưa gỗ"></div>
-        <p class="no">No. 03 — Mưa gỗ</p><h3>TRẦM No.3</h3><p>Đàn hương, vetiver, hoa nhài trắng.</p>
+        <p class="no">No. 03 — Mưa gỗ</p><h3>TRẦM No.3</h3><p>Đàn hương, vetiver, hoa nhài trắng. Tươi và ẩm như gỗ vừa gặp cơn mưa đầu mùa, dịu hơn cả bốn mùi trong bộ sưu tập.</p>
         <p class="price">1.750.000₫ · 50ml</p><a href="#contact" class="cta">Xem chi tiết →</a>
       </div>
       <div class="collection-item">
         <div class="frame"><img src="https://images.unsplash.com/photo-1560521166-99f8bed834f5?w=900&q=80&fm=jpg&fit=crop&auto=format" alt="TRẦM No.4 — Tro tàn"></div>
-        <p class="no">No. 04 — Tro tàn</p><h3>TRẦM No.4</h3><p>Trầm hương cháy, vani gỗ, cam thảo.</p>
+        <p class="no">No. 04 — Tro tàn</p><h3>TRẦM No.4</h3><p>Trầm hương cháy, vani gỗ, cam thảo. Đậm và ngọt khói, mùi hương đậm nhất bộ sưu tập — dành cho người không ngại bị nhớ tới lâu.</p>
         <p class="price">2.100.000₫ · 50ml</p><a href="#contact" class="cta">Xem chi tiết →</a>
       </div>
     </div>
@@ -347,10 +362,10 @@
       </div>
     </div>
     <div class="process-steps-col">
-      <div class="step-block" data-color="#b08d57"><p class="pnum">01</p><h3>Thu hoạch</h3><p>Chọn lọc gỗ trầm hương tự nhiên từ rừng Khánh Hòa, không khai thác ồ ạt.</p></div>
-      <div class="step-block" data-color="#8f6f42"><p class="pnum">02</p><h3>Chưng cất</h3><p>Chưng cất lạnh để giữ trọn phân tử hương tinh tế nhất.</p></div>
-      <div class="step-block" data-color="#cba873"><p class="pnum">03</p><h3>Ủ hương</h3><p>Ủ tối thiểu 90 ngày trong thùng gỗ sồi, trong bóng tối hoàn toàn.</p></div>
-      <div class="step-block" data-color="#6b5636"><p class="pnum">04</p><h3>Đóng chai</h3><p>Đóng thủ công từng chai, đánh số giới hạn theo mẻ.</p></div>
+      <div class="step-block" data-color="#b08d57"><p class="pnum">01</p><h3>Thu hoạch</h3><p>Nghệ nhân vào rừng chọn từng khúc gỗ đã kết trầm tự nhiên hơn 10 năm, đánh giá bằng kinh nghiệm chứ không bằng máy móc. Mỗi chuyến đi chỉ mang về vài kilogam gỗ đạt chuẩn.</p></div>
+      <div class="step-block" data-color="#8f6f42"><p class="pnum">02</p><h3>Chưng cất</h3><p>Gỗ được hấp mềm rồi chưng cất lạnh nhiều lượt ở nhiệt độ thấp, giữ trọn những phân tử hương tinh tế nhất mà nhiệt độ cao sẽ phá vỡ.</p></div>
+      <div class="step-block" data-color="#cba873"><p class="pnum">03</p><h3>Ủ hương</h3><p>Tinh dầu được ủ tối thiểu 90 ngày trong thùng gỗ sồi, cất trong bóng tối hoàn toàn để hương tiếp tục biến chuyển và kết dính với nhau một cách tự nhiên.</p></div>
+      <div class="step-block" data-color="#6b5636"><p class="pnum">04</p><h3>Đóng chai</h3><p>Từng chai được đóng thủ công, dán nhãn và đánh số giới hạn theo mẻ — không có hai chai nào rời xưởng cùng một ngày với số lượng lớn.</p></div>
     </div>
   </div>
 </section>
